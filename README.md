@@ -12,7 +12,7 @@ This project is a data dashboard built using React.js for the frontend and Node.
 2. **Navigate to the Project Directory**
 
     ```bash
-    `cd data-dashboard`
+    `cd techno-softwares-client`
 
     ```
 
