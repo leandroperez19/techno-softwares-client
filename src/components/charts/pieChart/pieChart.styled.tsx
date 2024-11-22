@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { PieChartWrapperProp } from "./pieChart.types";
+import { PieChartWrapperProps } from "./pieChart.types";
 
-export const PieChartWrapper = styled.div<PieChartWrapperProp>`
+export const PieChartWrapper = styled.div<PieChartWrapperProps>`
     svg {
         overflow: visible;
 

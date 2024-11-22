@@ -22,3 +22,8 @@ export interface PieChartProps {
     donut?: boolean;
     gap?: boolean;
 }
+
+export type PieChartWrapperProps = {
+    $isClickable: boolean;
+    $isDonut: boolean;
+};

@@ -6,6 +6,7 @@ import Select from "@/components/select/select";
 import Input from "@/components/input/input";
 import useNewSaleModal from "./newSaleModal.hooks";
 import Button from "@/components/button/button";
+import { toast } from "react-toastify";
 
 const NewSaleModal: FC<NewSaleModalProps> = ({ closeModal, refetch }) => {
     const {
@@ -19,7 +20,11 @@ const NewSaleModal: FC<NewSaleModalProps> = ({ closeModal, refetch }) => {
         handleSubmit,
     } = useNewSaleModal(closeModal, refetch);
 
-    if (!data) return;
+    if (!data)
+        return toast(
+            "It seems you still don't have any categories, please create one before adding a sale",
+            { type: "error" }
+        );
 
     return (
         <SideModal closeModal={closeModal}>

@@ -1,7 +1,7 @@
 version: "3.8"
 services:
     react-app:
-        image: techno-test:dev
+        image: techno_client_test:dev
         stdin_open: true
         ports:
             - "5173:5173"

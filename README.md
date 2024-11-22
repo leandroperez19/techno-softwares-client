@@ -1,50 +1,66 @@
-# React + TypeScript + Vite
+# Data Dashboard - Full Stack Developer Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a data dashboard built using React.js for the frontend and Node.js for the backend. It leverages MySQL for structured data storage and MongoDB for flexible data storage. This README focuses on the frontend setup.
 
-Currently, two official plugins are available:
+## Setup and Execution
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. **Install and Run Locally**
 
-## Expanding the ESLint configuration
+1. **Extract the Project**  
+   Extract the zip file to your desired directory.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. **Navigate to the Project Directory**
 
-- Configure the top-level `parserOptions` property like this:
+    ```bash
+    `cd data-dashboard`
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+    ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+3. **Install Dependencies**
+   Install the required packages using npm:
+   `npm install`
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+4. **Run the Development Server**
+   `npm run dev`
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### 2. **Docker Setup**
+
+This project supports Docker for development and previewing the production build.
+_Development with Live Reload_
+
+1. **Build the Development Image**
+   `npm run docker:build-dev`
+2. **Run the Development Container**
+   `npm run docker:run-dev`
+
+3. **Access the Application**
+   Navigate to: `http://localhost:5173`
+
+_Preview Production Build_
+
+1. **Build the Production Image**
+   `npm run docker:build-prod`
+2. **Run the Production Container**
+   `npm run docker:run-prod`
+
+3. **Access the Application**
+   Navigate to: `http://localhost:8080`
+
+## Project Features
+
+1. **Interactive Dashboard**
+
+    - Data visualizations using D3.js.
+    - Filters for date range and data type.
+
+2. **Pagination and Sorting**
+
+    - Handle large datasets efficiently with React Table.
+
+3. **Responsive Design**
+
+    - Styled using TailwindCSS for a mobile-friendly UI.
+
+4. **Reusable Components**
+
+    - Built with React’s compound component pattern for flexibility.

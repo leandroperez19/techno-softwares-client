@@ -1,4 +1,4 @@
-import { FourSizes } from "@/styles/constants/sizes";
+import { FourSizes } from "@/types/size";
 import { ReactNode } from "react";
 
 type SharedProps = {

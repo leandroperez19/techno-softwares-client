@@ -7,7 +7,13 @@
         "dev": "vite",
         "build": "tsc -b && vite build",
         "lint": "eslint .",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "cypress:component": "npx cypress run --component",
+        "dev-exposed": "vite --host",
+        "docker:build-dev": "docker build -t techno_client_test:dev -f Dockerfile --target dev .",
+        "docker:run-dev": "docker-compose up",
+        "docker:build-prod": "npm run build && docker build -t techno_client_test:prod -f Dockerfile --target prod .",
+        "docker:run-prod": "docker run -p 8080:8080 techno_client_test:prod"
     },
     "dependencies": {
         "@hookform/resolvers": "^3.9.1",
