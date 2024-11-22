@@ -26,6 +26,7 @@ This project is a data dashboard built using React.js for the frontend and Node.
 ### 2. **Docker Setup**
 
 This project supports Docker for development and previewing the production build.
+
 _Development with Live Reload_
 
 1. **Build the Development Image**
