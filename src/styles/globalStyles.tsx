@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         margin: 0;
         transition: color, background 0.2s ease-in-out;
-        font-family: "Open Sans", sans-serif;
+        font-family: "Inter", sans-serif;
     }
 
     body {

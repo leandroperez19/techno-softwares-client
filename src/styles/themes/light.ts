@@ -88,10 +88,20 @@ const lightTheme: DefaultTheme = {
         sectionColor: colors.almostBlack,
         sectionBgHover: colors.lightBlueGray,
     },
-
+    modal: {
+        primary: {
+            background: colors.white,
+            color: colors.black,
+            itemHover: colors.veryBrightGray,
+        },
+    },
     box: {
         background: colors.white,
         color: colors.technoDarkerGray,
+    },
+    table: {
+        background: colors.technoTableWhite,
+        bodyBackground: colors.white,
     },
 };
 

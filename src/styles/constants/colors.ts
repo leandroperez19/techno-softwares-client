@@ -36,6 +36,7 @@ const colors = {
     technoDarkGray: "#808080",
     technoTranslucentRed: "#FD68454D",
     technoDarkerGray: "#707070",
+    technoTableWhite: "#f5fcfb",
 };
 
 export default colors;

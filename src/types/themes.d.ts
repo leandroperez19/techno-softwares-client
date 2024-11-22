@@ -88,10 +88,20 @@ declare module "styled-components" {
             sectionColor: string;
             sectionBgHover: string;
         };
-
+        modal: {
+            primary: {
+                background: string;
+                color: string;
+                itemHover: string;
+            };
+        };
         box: {
             background: string;
             color: string;
+        };
+        table: {
+            background: string;
+            bodyBackground: string;
         };
     }
 }

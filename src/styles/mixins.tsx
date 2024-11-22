@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { Size } from "@/types/size";
 import { css } from "styled-components";
+import { desktop, tablet } from "./constants/sizes";
 
 interface Flex {
     align: "initial" | "center" | "flex-end" | "flex-start" | "unset";
@@ -72,3 +73,27 @@ export const NotIOS = (styles: string) => {
         }
     `;
 };
+
+export const pageContainer = () => css`
+    padding-block: 80px 40px;
+
+    @media (width >= ${desktop}) {
+        padding-block: 132px 80px;
+    }
+
+    .content {
+        padding-block: 24px;
+        width: 90%;
+        margin-inline: auto;
+        max-width: 400px;
+
+        @media (width >= ${tablet}) {
+            max-width: 768px;
+        }
+
+        @media (width >= ${desktop}) {
+            padding-block: 36px;
+            max-width: 1280px;
+        }
+    }
+`;
