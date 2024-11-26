@@ -12,7 +12,7 @@ const useCreateCategoryModal = (
 ) => {
     const {
         register,
-        formState: { errors },
+        formState: { errors, isValid },
         handleSubmit,
         reset,
     } = useValidator({
@@ -41,6 +41,7 @@ const useCreateCategoryModal = (
     return {
         register,
         errors,
+        isValid,
         handleSubmit,
         onSubmit,
     };

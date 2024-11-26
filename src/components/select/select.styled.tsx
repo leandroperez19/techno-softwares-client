@@ -19,6 +19,13 @@ const getSize = (size: SelectWrapperProps["$size"]) => {
 export const SelectWrapper = styled.div<SelectWrapperProps>`
     position: relative;
 
+    &.disabled {
+        .top-box {
+            cursor: not-allowed;
+            opacity: 0.3;
+        }
+    }
+
     .top-box {
         border: ${({ theme, $bordered, $color }) =>
             $bordered && `1px solid ${theme.input[$color].borderColor}`};

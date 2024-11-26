@@ -31,6 +31,7 @@ export interface SelectProps<T extends string | number> {
     shadow?: SelectSharedProps["shadow"];
     bordered?: SelectSharedProps["bordered"];
     radius?: SelectSharedProps["radius"];
+    disabled?: boolean;
 }
 
 export type SelectWrapperProps = {
@@ -49,4 +50,5 @@ export type OptionsBoxProps = {
     isLoading?: boolean;
     hasMore?: boolean;
     setOptionsBoxDisplayed: Dispatch<SetStateAction<boolean>>;
+    selectId: string;
 };

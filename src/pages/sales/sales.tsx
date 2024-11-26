@@ -7,6 +7,7 @@ import Loader from "@/components/loader/loader";
 import ErrorBox from "@/components/errorBox/errorBox";
 import Table from "@/components/table/table";
 import NewSaleModal from "./components/newSaleModal/newSaleModal";
+import Box from "@/components/box/box";
 
 const Sales: FC = () => {
     const {
@@ -67,16 +68,25 @@ const Sales: FC = () => {
                     </Button>
                 </div>
                 <div className="mt-6">
-                    <Table
-                        table={table}
-                        isFetching={isFetching}
-                        pagination={{
-                            canNext: data.canNext,
-                            canPrev: data.canPrev,
-                            handlePrevPage: handlePrevPage,
-                            handleNextPage: handleNextPage,
-                        }}
-                    />
+                    {data.sales.length === 0 ? (
+                        <Box className="h-[400px] flex-center" shadow>
+                            <h4 className="font-bold text-lg lg:text-[24px]">
+                                Seems you haven't recorded any sales yet, please
+                                do so pressing the button above
+                            </h4>
+                        </Box>
+                    ) : (
+                        <Table
+                            table={table}
+                            isFetching={isFetching}
+                            pagination={{
+                                canNext: data.canNext,
+                                canPrev: data.canPrev,
+                                handlePrevPage: handlePrevPage,
+                                handleNextPage: handleNextPage,
+                            }}
+                        />
+                    )}
                 </div>
             </div>
         </SalesWrapper>

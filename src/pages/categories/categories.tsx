@@ -7,6 +7,7 @@ import Table from "@/components/table/table";
 import Loader from "@/components/loader/loader";
 import ErrorBox from "@/components/errorBox/errorBox";
 import CreateCategoryModal from "./components/createCategoryModal/createCategoryModal";
+import Box from "@/components/box/box";
 
 const Categories: FC = () => {
     const {
@@ -70,16 +71,25 @@ const Categories: FC = () => {
                     </Button>
                 </div>
                 <div className="mt-6">
-                    <Table
-                        table={table}
-                        isFetching={isFetching}
-                        pagination={{
-                            canNext: data.canNext,
-                            canPrev: data.canPrev,
-                            handlePrevPage: handlePrevPage,
-                            handleNextPage: handleNextPage,
-                        }}
-                    />
+                    {data.categories.length === 0 ? (
+                        <Box className="h-[400px] flex-center" shadow>
+                            <h4 className="font-bold text-lg lg:text-[24px]">
+                                Seems you haven't created any category yet,
+                                please do so pressing the button above
+                            </h4>
+                        </Box>
+                    ) : (
+                        <Table
+                            table={table}
+                            isFetching={isFetching}
+                            pagination={{
+                                canNext: data.canNext,
+                                canPrev: data.canPrev,
+                                handlePrevPage: handlePrevPage,
+                                handleNextPage: handleNextPage,
+                            }}
+                        />
+                    )}
                 </div>
             </div>
         </CategoriesWrapper>

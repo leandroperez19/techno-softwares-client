@@ -6,7 +6,7 @@ import Select from "@/components/select/select";
 import Input from "@/components/input/input";
 import useNewSaleModal from "./newSaleModal.hooks";
 import Button from "@/components/button/button";
-import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const NewSaleModal: FC<NewSaleModalProps> = ({ closeModal, refetch }) => {
     const {
@@ -15,16 +15,11 @@ const NewSaleModal: FC<NewSaleModalProps> = ({ closeModal, refetch }) => {
         currencyOptions,
         itemTypeOptions,
         data,
+        isButtonDisabled,
         handleChange,
         onSubmit,
         handleSubmit,
     } = useNewSaleModal(closeModal, refetch);
-
-    if (!data)
-        return toast(
-            "It seems you still don't have any categories, please create one before adding a sale",
-            { type: "error" }
-        );
 
     return (
         <SideModal closeModal={closeModal}>
@@ -96,19 +91,35 @@ const NewSaleModal: FC<NewSaleModalProps> = ({ closeModal, refetch }) => {
                         onChange={(val) => handleChange("itemType", val)}
                     />
                     <div className="mt-6 lg:col-span-2">
+                        {data?.categories.length === 0 && (
+                            <span className="text-red-500 text-sm pb-2 block">
+                                Seems you haven't created any categories yet,
+                                please create one in order to create a sale.{" "}
+                                <Link
+                                    to={"/categories"}
+                                    className="text-blue-500 underline"
+                                >
+                                    Categories
+                                </Link>
+                            </span>
+                        )}
                         <Select
                             label="Category"
-                            options={data.categories.map((category) => ({
-                                label: category.name,
-                                value: category.id,
-                            }))}
+                            options={
+                                data?.categories.map((category) => ({
+                                    label: category.name,
+                                    value: category.id,
+                                })) ?? []
+                            }
                             onChange={(val) => handleChange("categoryId", val)}
+                            disabled={data?.categories.length === 0}
                         />
                     </div>
                     <Button
                         className="w-full mt-4"
                         radius="24px"
                         customCssClass="lg:col-span-2"
+                        disabled={isButtonDisabled}
                     >
                         Save Sale
                     </Button>

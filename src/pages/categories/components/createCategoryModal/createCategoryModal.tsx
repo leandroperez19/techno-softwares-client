@@ -10,10 +10,8 @@ const CreateCategoryModal: FC<NewCategoryModalProps> = ({
     closeModal,
     refetch,
 }) => {
-    const { register, errors, onSubmit, handleSubmit } = useCreateCategoryModal(
-        closeModal,
-        refetch
-    );
+    const { register, errors, onSubmit, handleSubmit, isValid } =
+        useCreateCategoryModal(closeModal, refetch);
 
     return (
         <SideModal closeModal={closeModal}>
@@ -47,6 +45,7 @@ const CreateCategoryModal: FC<NewCategoryModalProps> = ({
                         className="w-full mt-4"
                         radius="24px"
                         customCssClass="lg:col-span-2"
+                        disabled={!isValid}
                     >
                         Save Sale
                     </Button>

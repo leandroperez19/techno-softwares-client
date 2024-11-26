@@ -57,7 +57,7 @@ const useNewSaleModal = (
 
     const {
         register,
-        formState: { errors },
+        formState: { errors, isValid },
         handleSubmit,
         reset,
     } = useValidator({
@@ -102,6 +102,13 @@ const useNewSaleModal = (
         closeModal(false);
     };
 
+    const isOtherDataValid = Boolean(
+        otherData.categoryId && otherData.currency && otherData.itemType
+    );
+
+    const isButtonDisabled =
+        data?.categories.length === 0 || !isValid || !isOtherDataValid;
+
     return {
         register,
         errors,
@@ -110,6 +117,7 @@ const useNewSaleModal = (
         data,
         errorMessage,
         error,
+        isButtonDisabled,
         handleSubmit,
         handleChange,
         onSubmit,

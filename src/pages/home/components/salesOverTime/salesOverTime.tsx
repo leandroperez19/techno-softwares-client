@@ -8,7 +8,7 @@ import ErrorBox from "@/components/errorBox/errorBox";
 import { useScreen } from "@/hooks/useScreen";
 
 const SalesOverTime: FC = () => {
-    const { data, rows, isLoading, errorMessage } = useSalesOverTime();
+    const { data, isLoading, errorMessage, rows } = useSalesOverTime();
     const { isMobile, screen } = useScreen();
 
     if (isLoading)
@@ -32,39 +32,57 @@ const SalesOverTime: FC = () => {
                     Progress of Sales profits
                 </h3>
                 <div className="mx-auto w-fit">
-                    <LineChart
-                        data={data.map((sale) => ({
-                            ...sale,
-                            date: sale.date.toISOString(),
-                        }))}
-                        width={
-                            screen === "desktop" ? 920 : isMobile ? 328 : 700
-                        }
-                        height={
-                            screen === "desktop" ? 400 : isMobile ? 170 : 350
-                        }
-                    />
+                    {data.length === 0 ? (
+                        <div className="h-[150px] flex-center">
+                            <h4 className="font-bold text-lg lg:text-[20px] text-center">
+                                There's no data to compute on this chart, please
+                                record a sale to show charts.
+                            </h4>
+                        </div>
+                    ) : (
+                        <LineChart
+                            data={data.map((sale) => ({
+                                ...sale,
+                                date: sale.date.toISOString(),
+                            }))}
+                            width={
+                                screen === "desktop"
+                                    ? 920
+                                    : isMobile
+                                    ? 328
+                                    : 700
+                            }
+                            height={
+                                screen === "desktop"
+                                    ? 400
+                                    : isMobile
+                                    ? 170
+                                    : 350
+                            }
+                        />
+                    )}
                 </div>
                 <div className="mt-4 grid gap-4">
-                    {rows.map((row, i) => (
-                        <div
-                            key={i}
-                            className="row flex w-full justify-between text-sm lg:text-base"
-                        >
-                            <span className="text-tertiary font-semibold">
-                                {row.key}
-                            </span>
-                            <span
-                                className={`text-light ${
-                                    row.key === "Lower Sale"
-                                        ? "text-primary"
-                                        : "text-secondary"
-                                }`}
+                    {data.length > 0 &&
+                        rows.map((row, i) => (
+                            <div
+                                key={i}
+                                className="row flex w-full justify-between text-sm lg:text-base"
                             >
-                                {row.value}
-                            </span>
-                        </div>
-                    ))}
+                                <span className="text-tertiary font-semibold">
+                                    {row.key}
+                                </span>
+                                <span
+                                    className={`text-light ${
+                                        row.key === "Lower Sale"
+                                            ? "text-primary"
+                                            : "text-secondary"
+                                    }`}
+                                >
+                                    {row.value}
+                                </span>
+                            </div>
+                        ))}
                 </div>
             </SalesOverTimeWrapper>
         </Box>

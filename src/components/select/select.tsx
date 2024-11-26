@@ -12,18 +12,19 @@ const OptionsBox: FC<OptionsBoxProps> = ({
     hasMore,
     loadMore,
     setOptionsBoxDisplayed,
+    selectId,
 }) => {
     useEffect(() => {
         const close = (e: MouseEvent<HTMLElement> | globalThis.MouseEvent) => {
             const element = e.target as Element;
-            if (element.closest(".techno_select")) return;
+            if (element.closest(`.techno_select_${selectId}`)) return;
             setOptionsBoxDisplayed(false);
         };
 
         document.addEventListener("click", close);
 
         return () => document.removeEventListener("click", close);
-    }, [setOptionsBoxDisplayed]);
+    }, [setOptionsBoxDisplayed, selectId]);
 
     return (
         <div className="absolute bg-white border z-10 border-gray-300 text-sm rounded w-full mt-1 max-h-[350px] overflow-auto">
@@ -68,6 +69,7 @@ const Select: FC<SelectProps<string | number>> = ({
     shadow = false,
     radius = "8px",
     color = "primary",
+    disabled = false,
 }) => {
     const {
         selected,
@@ -76,6 +78,7 @@ const Select: FC<SelectProps<string | number>> = ({
         handleSelect,
         filteredOptions,
         optionsBoxDisplayed,
+        uniqueId,
         openOptionsBox,
         setOptionsBoxDisplayed,
     } = useSelect({
@@ -84,6 +87,7 @@ const Select: FC<SelectProps<string | number>> = ({
         onChange,
         defaultValue,
         searchable,
+        disabled,
     });
 
     return (
@@ -93,7 +97,7 @@ const Select: FC<SelectProps<string | number>> = ({
             $shadow={shadow}
             $radius={radius}
             $color={color}
-            className="techno_select"
+            className={`techno_select_${uniqueId} ${disabled && "disabled"}`}
         >
             {searchable && (
                 <input
@@ -132,6 +136,7 @@ const Select: FC<SelectProps<string | number>> = ({
                         selected={selected}
                         isLoading={isLoading}
                         hasMore={hasMore}
+                        selectId={uniqueId}
                         loadMore={loadMore}
                     />
                 )}

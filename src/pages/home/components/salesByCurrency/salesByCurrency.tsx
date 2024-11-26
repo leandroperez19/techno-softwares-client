@@ -32,16 +32,25 @@ const SalesByCurrency: FC = () => {
                 </h3>
                 <div className="xl:flex xl:items-end xl:justify-between">
                     <div className="mx-auto w-fit mt-4 xl:mx-0">
-                        <PieChart
-                            data={data.map((sale) => ({
-                                value: sale.value,
-                            }))}
-                            width={230}
-                            height={230}
-                            colors={COLORS}
-                            donut
-                            fontSize="12px"
-                        />
+                        {data.length === 0 ? (
+                            <div className="h-[150px] flex-center">
+                                <h4 className="font-bold text-lg lg:text-[20px] text-center">
+                                    There's no data to compute on this chart,
+                                    please record a sale to show charts.
+                                </h4>
+                            </div>
+                        ) : (
+                            <PieChart
+                                data={data.map((sale) => ({
+                                    value: sale.value,
+                                }))}
+                                width={230}
+                                height={230}
+                                colors={COLORS}
+                                donut
+                                fontSize="12px"
+                            />
+                        )}
                     </div>
                     <div className="mt-4 grid gap-2 lg:basis-[35%] lg:gap-6">
                         {data.map((sale, i) => (

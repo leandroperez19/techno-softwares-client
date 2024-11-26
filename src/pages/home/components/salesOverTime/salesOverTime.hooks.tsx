@@ -23,9 +23,10 @@ const useSalesOverTime = () => {
 
     const recordsCount = data?.length;
 
-    const lowestSale = data?.reduce((prev, curr) =>
-        prev.close < curr.close ? prev : curr
-    );
+    const lowestSale =
+        data &&
+        data.length > 0 &&
+        data?.reduce((prev, curr) => (prev.close < curr.close ? prev : curr));
 
     const {
         close: lowestClose,
@@ -33,9 +34,10 @@ const useSalesOverTime = () => {
         date: lowestDate,
     } = lowestSale ? lowestSale : {};
 
-    const highestSale = data?.reduce((prev, curr) =>
-        prev.close > curr.close ? prev : curr
-    );
+    const highestSale =
+        data &&
+        data.length > 0 &&
+        data?.reduce((prev, curr) => (prev.close > curr.close ? prev : curr));
 
     const {
         close: highestClose,

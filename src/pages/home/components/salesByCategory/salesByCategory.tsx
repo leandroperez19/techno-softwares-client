@@ -32,20 +32,29 @@ const SalesByCategory: FC = () => {
     return (
         <Box shadow className="p-6">
             <SalesByCategoryWrapper>
-                <h3 className="font-bold text-lg text-center max-w-[200px] mx-auto">
-                    Percentage of Sales by Category
+                <h3 className="font-bold text-lg text-center max-w-[250px] mx-auto">
+                    Percentage of Sales Profits by Category
                 </h3>
                 <div className="xl:flex xl:justify-between xl:items-end">
                     <div className="mx-auto w-fit mt-4 xl:mx-0">
-                        <PieChart
-                            data={data.map((sale) => ({
-                                value: sale.percentage,
-                            }))}
-                            width={230}
-                            height={230}
-                            colors={COLORS.slice(2, -1)}
-                            fontSize="12px"
-                        />
+                        {data.length === 0 ? (
+                            <div className="h-[150px] flex-center">
+                                <h4 className="font-bold text-lg lg:text-[20px] text-center">
+                                    There's no data to compute on this chart,
+                                    please record a sale to show charts.
+                                </h4>
+                            </div>
+                        ) : (
+                            <PieChart
+                                data={data.map((sale) => ({
+                                    value: sale.percentage,
+                                }))}
+                                width={230}
+                                height={230}
+                                colors={COLORS.slice(2, -1)}
+                                fontSize="12px"
+                            />
+                        )}
                     </div>
                     <Swiper
                         direction="vertical"
