@@ -65,3 +65,9 @@ _Preview Production Build_
 4. **Reusable Components**
 
     - Built with React’s compound component pattern for flexibility.
+
+## Notes
+
+-   After installing the dependencies you can run the project, then open a new terminal and then either run `npx cypress run --component` to run component testing from the terminal or `npx cypress open` to run the tests with a UI (remember to run the project, otherwise the tests will fail).
+
+-   The expected flow for the app is: Registering > Create a Category > Create a Sale. Charts and logs will be created automatically.
